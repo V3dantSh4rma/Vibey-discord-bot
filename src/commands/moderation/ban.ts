@@ -2,9 +2,11 @@ import { Command, CommandCategories, Vibey }                                    
 import { SlashCommandBuilder, SlashCommandStringOption, SlashCommandUserOption } from "@discordjs/builders";
 import { CacheType, CommandInteraction, GuildMember, MessageEmbed }              from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class Ban extends Command {
 	public category : CommandCategories = "MODERATION";
-	public modOnly : boolean = true;
+	public modOnly : boolean            = true;
 
 	public builder() : Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">{
 		return new SlashCommandBuilder()

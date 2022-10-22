@@ -91,6 +91,14 @@ export class Vibey extends Client {
 						});
 					}
 
+					if ( command.category == "NSFW" ) {
+						if ( interaction.channel.type == "GUILD_TEXT" && interaction.channel.nsfw ) {
+							return command.handle(interaction, this);
+						}
+
+						return await interaction.reply("This command is only accessible in NSFW channels. :underage:");
+					}
+
 					if ( command.modOnly ) {
 						if ( interaction.memberPermissions.has("KICK_MEMBERS" || "KICK_MEMBERS" || "ADMINISTRATOR") ) {
 							return await command.handle(interaction, this);

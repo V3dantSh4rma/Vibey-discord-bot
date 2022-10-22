@@ -2,6 +2,8 @@ import { Command, CommandCategories, Vibey }           from "../../handlers/";
 import { SlashCommandBuilder, SlashCommandUserOption } from "@discordjs/builders";
 import { CacheType, CommandInteraction, User }         from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class Gayrate extends Command {
 	public category : CommandCategories = "FUN";
 

@@ -4,6 +4,8 @@ import { CacheType, CommandInteraction, MessageEmbed }   from "discord.js";
 import { CryptoManager }                                 from "../../lib/crypto/cryptoManager";
 import CryptoInfo                                        from "../../lib/crypto/cryptoInfo";
 
+const json = require("../../data/index.json");
+
 export default class Crypto extends Command {
 	public category : CommandCategories = "GENERAL";
 
@@ -58,6 +60,5 @@ export default class Crypto extends Command {
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);
 		}
-
 	}
 }

@@ -3,6 +3,8 @@ import { SlashCommandBuilder }                                          from "@d
 import { AnyChannel, CacheType, CommandInteraction, VoiceBasedChannel } from "discord.js";
 import { DiscordGatewayAdapterCreator, joinVoiceChannel }               from "@discordjs/voice";
 
+const json = require("../../data/index.json");
+
 export default class Join extends Command {
 	public category : CommandCategories = "MUSIC";
 
@@ -39,7 +41,7 @@ export default class Join extends Command {
 		} catch ( e ) {
 			console.log(e);
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

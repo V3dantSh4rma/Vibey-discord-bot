@@ -2,6 +2,8 @@ import { Command, CommandCategories, Vibey }                from "../../handlers
 import { SlashCommandBuilder }                              from "@discordjs/builders";
 import { CacheType, CommandInteraction, VoiceBasedChannel } from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class Pause extends Command {
 	public category : CommandCategories = "MUSIC";
 
@@ -33,7 +35,7 @@ export default class Pause extends Command {
 			await interaction.followUp({ content : "Successfully Paused the player." });
 		} catch ( e ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

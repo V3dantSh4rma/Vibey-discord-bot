@@ -2,6 +2,8 @@ import { Command, CommandCategories, Vibey }             from "../../handlers";
 import { SlashCommandBuilder, SlashCommandStringOption } from "@discordjs/builders";
 import { CacheType, CommandInteraction }                 from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class RPS extends Command {
 	public category : CommandCategories = "GAMING";
 
@@ -76,7 +78,7 @@ export default class RPS extends Command {
 			return await interaction.followUp("Invalid Selection. Make sure to type in ``Rock``, ``Paper`` or ``Scissors`` to play.");
 		} catch ( e ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

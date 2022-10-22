@@ -2,6 +2,8 @@ import { Command, CommandCategories, Vibey }             from "../../handlers";
 import { SlashCommandBuilder, SlashCommandStringOption } from "@discordjs/builders";
 import { CacheType, CommandInteraction }                 from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class JavascriptParser extends Command {
 	public category : CommandCategories = "GENERAL";
 
@@ -23,7 +25,7 @@ export default class JavascriptParser extends Command {
 		try {
 			eval(interaction.options.getString("code") as string);
 		} catch ( e ) {
-			await interaction.reply({ content : "There was an error in executing that command.", ephemeral : true });
+			await interaction.reply({ content : json.error_msg, ephemeral : true });
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);
 			return;
 		}

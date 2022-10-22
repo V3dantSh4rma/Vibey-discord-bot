@@ -3,6 +3,8 @@ import { SlashCommandBuilder, SlashCommandIntegerOption } from "@discordjs/build
 import { CacheType, CommandInteraction }                  from "discord.js";
 import axios, { AxiosResponse }                           from "axios";
 
+const json = require("../../data/index.json");
+
 export default class Mathfact extends Command {
 	public category : CommandCategories = "API";
 
@@ -26,7 +28,7 @@ export default class Mathfact extends Command {
 			await interaction.followUp(`\`\`\`${ response.data }\`\`\``);
 		} catch ( e ) {
 			await interaction.followUp({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

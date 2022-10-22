@@ -3,6 +3,7 @@ import { SlashCommandBuilder }                                        from "@dis
 import { CacheType, CommandInteraction, MessageButton, MessageEmbed } from "discord.js";
 import paginate                                                       from "../lib/pagination";
 
+const json = require("../data/index.json");
 
 export default class Help extends Command {
 	public category : CommandCategories = "GENERAL";
@@ -46,6 +47,10 @@ export default class Help extends Command {
 				},
 
 				MODERATION : {
+					commands : []
+				},
+
+				NSFW : {
 					commands : []
 				}
 			};
@@ -103,6 +108,13 @@ export default class Help extends Command {
 				.setColor("RANDOM")
 				.setTimestamp();
 
+			const nsfw : MessageEmbed = new MessageEmbed()
+				.setTitle(`${ client?.user?.username }'s Commands`)
+				.setDescription(`\`\`\`Page: 8\`\`\`\nCommands Available - ${ commandData.NSFW.commands.length }`)
+				.addField("> :underage: NSFW Commands", `\`\`\`- /${ commandData.NSFW.commands.join("\n- /") }\`\`\``)
+				.setColor("RANDOM")
+				.setTimestamp();
+
 			const button1 : MessageButton = new MessageButton()
 				.setEmoji("⏮️")
 				.setStyle("PRIMARY")
@@ -114,10 +126,10 @@ export default class Help extends Command {
 				.setStyle("PRIMARY")
 				.setCustomId("btn-2");
 
-			await paginate(interaction, [ apiCommands, funCommands, gameCommands, imageCommands, generalCommands, information, moderation ], [ button1, button2 ]);
+			await paginate(interaction, [ apiCommands, funCommands, gameCommands, imageCommands, generalCommands, information, moderation, nsfw ], [ button1, button2 ]);
 		} catch ( e ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

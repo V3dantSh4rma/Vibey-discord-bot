@@ -3,6 +3,8 @@ import { SlashCommandBuilder, SlashCommandUserOption }                    from "
 import { CacheType, CommandInteraction, GuildMember, MessageEmbed, Role } from "discord.js";
 import moment                                                             from "moment";
 
+const json = require("../../data/index.json");
+
 export default class Userinfo extends Command {
 	public category : CommandCategories = "INFORMATION";
 
@@ -69,7 +71,7 @@ export default class Userinfo extends Command {
 		} catch ( e ) {
 			console.log(e);
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

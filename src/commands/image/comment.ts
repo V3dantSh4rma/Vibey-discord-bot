@@ -3,6 +3,8 @@ import { Command, CommandCategories, Vibey }                      from "../../ha
 import { SlashCommandBuilder, SlashCommandStringOption }          from "@discordjs/builders";
 import { CacheType, CommandInteraction, MessageAttachment, User } from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class Comment extends Command {
 	public category : CommandCategories = "IMAGE";
 
@@ -40,7 +42,7 @@ export default class Comment extends Command {
 			});
 		} catch ( e ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

@@ -12,13 +12,13 @@ export type CommandCategories =
 	| "MODERATION"
 	| "DEVELOPER"
 	| "GAMING"
-	| "ASTRONOMY";
+	| "ASTRONOMY"
+	| "NSFW";
 
 export abstract class Command {
 
 	public category? : CommandCategories;
 	public dev? : boolean;
-	public nsfw? : boolean;
 	public modOnly? : boolean;
 	public usersHaveAccess? : Number[];
 

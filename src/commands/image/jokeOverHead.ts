@@ -4,6 +4,8 @@ import { CacheType, CommandInteraction, MessageAttachment } from "discord.js";
 import { Canvacord }                                        from "canvacord";
 import Buffer                                               from "buffer";
 
+const json = require("../../data/index.json");
+
 export default class JokeOverHead extends Command {
 	public category : CommandCategories = "IMAGE";
 
@@ -35,7 +37,7 @@ export default class JokeOverHead extends Command {
 			await interaction.reply({ files : [ attachment ] });
 		} catch ( e ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

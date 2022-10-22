@@ -2,6 +2,8 @@ import { Command, CommandCategories, Vibey }             from "../../handlers";
 import { SlashCommandBuilder, SlashCommandNumberOption } from "@discordjs/builders";
 import { CacheType, CommandInteraction, MessageEmbed }   from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class Httpdog extends Command {
 	public category : CommandCategories = "FUN";
 
@@ -36,7 +38,7 @@ export default class Httpdog extends Command {
 			await interaction.followUp({ embeds : [ embed ] });
 		} catch ( e ) {
 			await interaction.followUp({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

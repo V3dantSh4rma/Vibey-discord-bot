@@ -3,6 +3,8 @@ import { SlashCommandBuilder, SlashCommandStringOption } from "@discordjs/builde
 import { CacheType, CommandInteraction, MessageEmbed }   from "discord.js";
 import { Crypter }                                       from "../../lib/encryption-decryption/crypter";
 
+const json = require("../../data/index.json");
+
 export default class Decrypt extends Command {
 	public category : CommandCategories = "INFORMATION";
 
@@ -35,7 +37,7 @@ export default class Decrypt extends Command {
 			await interaction.reply({ embeds : [ embed ] });
 		} catch ( e ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

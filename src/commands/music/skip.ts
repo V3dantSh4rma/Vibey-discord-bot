@@ -1,7 +1,9 @@
+// IN DEVELOPMENT!
 import { Command, CommandCategories, Vibey } from "../../handlers";
 import { SlashCommandBuilder }               from "@discordjs/builders";
 import { CacheType, CommandInteraction }     from "discord.js";
 //import { QueueHandler }                      from "../../handlers/queueHandler";
+const json = require("../../data/index.json");
 
 export default class Skip extends Command {
 	public category : CommandCategories = "MUSIC";
@@ -14,6 +16,5 @@ export default class Skip extends Command {
 
 	async handle( interaction : CommandInteraction<CacheType>, client : Vibey ) : Promise<any>{
 		//const serverQueue = QueueHandler.checkIfQueueExists(interaction.guildId as unknown as number);
-
 	}
 }

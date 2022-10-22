@@ -3,6 +3,8 @@ import { SlashCommandBuilder, SlashCommandUserOption }       from "@discordjs/bu
 import { CacheType, CommandInteraction, MessageEmbed, User } from "discord.js";
 import axios, { AxiosResponse }                              from "axios";
 
+const json = require("../../data/index.json");
+
 export default class Cuddle extends Command {
 	public category : CommandCategories = "API";
 
@@ -43,7 +45,7 @@ export default class Cuddle extends Command {
 			return;
 		} catch ( e ) {
 			await interaction.followUp({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

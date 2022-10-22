@@ -5,6 +5,8 @@ import { AudioResource, createAudioResource, DiscordGatewayAdapterCreator, joinV
 import * as play                                                                              from "play-dl";
 import { SoundCloudStream, YouTubeStream, YouTubeVideo }                                      from "play-dl";
 
+const json = require("../../data/index.json");
+
 export default class Play extends Command {
 	public category : CommandCategories = "MUSIC";
 
@@ -69,7 +71,7 @@ export default class Play extends Command {
 			//await interaction.followUp(`${ resource.playbackDuration }`);
 		} catch ( e ) {
 			await interaction.followUp({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

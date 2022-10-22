@@ -2,6 +2,8 @@ import { Command, CommandCategories, Vibey }                        from "../../
 import { SlashCommandBuilder }                                      from "@discordjs/builders";
 import { CacheType, CommandInteraction, Guild, MessageEmbed, User } from "discord.js";
 
+const json = require("../../data/index.json");
+
 export default class Guilds extends Command {
 	public category : CommandCategories = "INFORMATION";
 
@@ -29,7 +31,7 @@ export default class Guilds extends Command {
 			await interaction.reply({ embeds : [ embed ] });
 		} catch ( e : any ) {
 			await interaction.reply({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);

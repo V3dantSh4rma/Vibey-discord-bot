@@ -3,6 +3,8 @@ import { CacheType, CommandInteraction }     from "discord.js";
 import { Command, CommandCategories, Vibey } from "../../handlers";
 import axios, { AxiosResponse }              from "axios";
 
+const json = require("../../data/index.json");
+
 export default class Darkjoke extends Command {
 	public category? : CommandCategories = "FUN";
 
@@ -27,7 +29,7 @@ export default class Darkjoke extends Command {
 			return;
 		} catch ( e ) {
 			await interaction.followUp({
-				content   : "There was an error in executing the command. I have told the developers about it.",
+				content   : json.error_msg,
 				ephemeral : true
 			});
 			console.error(`- Error at command ${ this.builderJson.name }.\n\t\t${ e }`);
