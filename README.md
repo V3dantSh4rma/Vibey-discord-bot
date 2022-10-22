@@ -12,8 +12,7 @@ Please make a Pull request adding the command which you fixed or have added, men
 
 # Changes to be done:
 - FFMPEG on Windows seems fucked up. Music used to be working all smooth and it lags and stutters. Either have to find _another way_ to get the music work smoothly or just have to stick with the current if failed to do so. 
-- Queue handler for the music commands. (Coded the logic, implementation is to be done)
-- Lacks NSFW commands other than the [only nsfw command](src/commands/nsfw/randomnsfw.ts).
+- Queue handler for the music commands. (Coded the logic, implementation is to be done).
 - Convert the [raw css](./src/static/stylings/styling.css) into Tailwindcss to make life more easier.
 
 # Installation
